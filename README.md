@@ -9,11 +9,17 @@ Its main functions include:
 
 ## Installation:
 1. Installing InstagramApi
-    pip install InstagramApi
+```bash
+pip install InstagramApi
+```
 2. Installing BeautifulSoup
-    pip install beautifulsoup4
+```bash
+pip install beautifulsoup4
+```
 3. Installing TextBlob
-    pip install textblob
+```bash
+pip install textblob
+```
 
 ## Credits:
 * Diana Kmet
