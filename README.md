@@ -3,7 +3,7 @@
 ## Description:
 Telegram bot that will help you effectively use your Instagram profile.
 Its main functions include:
-* Listing Recommended Profiles
+* Getting a list of recommended Profiles
 * Removing ads from your feed
 * Getting a list of followed profiles that you don’t visit very often
 
