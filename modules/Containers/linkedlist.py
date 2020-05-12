@@ -27,3 +27,9 @@ class LinkedList:
             item = self._current.item
             self._current = self._current.next
             return item
+
+    def __str__(self):
+        string = ""
+        for item in self:
+            string += f"{item} -> "
+        return string + "..."
