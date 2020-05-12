@@ -23,16 +23,13 @@ class GeneratorContainer:
         self._item_length = 0
 
     def add_generator(self, generator):
-        '''
         if not isinstance(generator, GeneratorType):
             raise BadGenerator('Can add only Generators')
-        else:
-        '''
-        if self._generator_length == 0:
+        elif self._generator_length == 0:
             self._current = Node(generator)
             self._previous = self._current
             self._previous.next = self._current
-            self._generator_length += 1
+            self._generator_length = 1
         else:
             self._previous.next = Node(generator,
                                        self._current)
@@ -70,10 +67,11 @@ class GeneratorContainer:
     def isempty(self):
         return self._current is None
 
-    def save_items(limit=10):
+    def save_items(self, limit=10):
         i = 0
         while i < limit and self._generator_length > 0:
             self.generate_item()
+            i += 1
 
     def __str__(self):
         string = ""
@@ -82,3 +80,15 @@ class GeneratorContainer:
             string += f"{head.item} -> "
             head = head.next
         return string[:-4]
+
+    def __iter__(self):
+        self._current_item = self._items
+        return self
+
+    def __next__(self):
+        if self._current_item is None:
+            raise StopIteration
+        else:
+            value = self._current_item.item
+            self._current_item = self._current_item.next
+            return value
