@@ -8,15 +8,19 @@ Its main functions include:
 * Getting a list of followed profiles that you don’t visit very often
 
 ## Installation:
-1. Installing InstagramApi
+1. Installing Instpector
 ```bash
-pip install InstagramApi
+pip install Instpector
 ```
 2. Installing BeautifulSoup
 ```bash
 pip install beautifulsoup4
 ```
-3. Installing TextBlob
+3. Installing Fake Useragent
+```bash
+pip install fake-useragent
+```
+4. Installing TextBlob
 ```bash
 pip install textblob
 ```
