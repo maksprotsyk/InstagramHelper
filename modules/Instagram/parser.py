@@ -7,17 +7,20 @@ import re
 class InvalidURL(Exception):
     pass
 
-
 class HtmlParser:
     def __init__(self, url):
         self._url = url
-        self._parser = self.get_parser()
+        self._parser = None
 
-    def get_parser(self):
-        html = requests\
-            .get(self._url, {'User-agent': UserAgent().chrome})\
-            .text
-        return BeautifulSoup(html, "html.parser")
+    @property
+    def parser(self):
+        if self._parser is None:
+            html = requests\
+                .get(self._url)\
+                .text
+            return BeautifulSoup(html, "html.parser")
+        else:
+            return self._parser
 
     @property
     def url(self):
@@ -36,7 +39,7 @@ class InstagramParser(HtmlParser):
         self._data = None
 
     def get_info(self):
-        text = self._parser\
+        text = self.parser\
                .find_all('script', type="text/javascript")[3]\
                .text
         return re.findall(r'{"count":(.+?)[,}]', text)
@@ -63,3 +66,4 @@ class InstagramParser(HtmlParser):
     @property
     def posts(self):
         return self._get_data(4)
+
