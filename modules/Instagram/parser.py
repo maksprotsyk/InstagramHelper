@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
 import requests
 import re
-
 
 class InvalidURL(Exception):
     pass
@@ -18,9 +16,8 @@ class HtmlParser:
             html = requests\
                 .get(self._url)\
                 .text
-            return BeautifulSoup(html, "html.parser")
-        else:
-            return self._parser
+            self._parser = BeautifulSoup(html, "html.parser")
+        return self._parser
 
     @property
     def url(self):
@@ -37,6 +34,8 @@ class InstagramParser(HtmlParser):
     def __init__(self, username):
         super().__init__(self.URL.format(username))
         self._data = None
+        self._id = None
+        self._username = username
 
     def get_info(self):
         text = self.parser\
@@ -46,13 +45,17 @@ class InstagramParser(HtmlParser):
 
     @staticmethod
     def convert_num(num):
-        return (int(num.replace(',', '')
-                if 'm' not in num
-                else int(float(num[:-1]) * 1000000)))
+        if 'm' in num:
+            return int(float(num[:-1]) * 1000000)
+        elif 'k' in num:
+            return int(float(num[:-1]) * 1000)
+        else:
+            return int(num.replace(',', ''))
 
     def _get_data(self, index):
         if self._data is None:
             self._data = self.get_info()
+
         return self.convert_num(self._data[index])
 
     @property
@@ -66,4 +69,26 @@ class InstagramParser(HtmlParser):
     @property
     def posts(self):
         return self._get_data(4)
+
+    @property
+    def id(self):
+        if self._id is None:
+            text = self\
+                .parser\
+                .find_all('script', type="text/javascript")[3]\
+                .text
+            try:
+                self._id = re.search(r'"owner":{"id":"(.+?)"[,}]', text)[1]
+            except TypeError:
+                self._id = None
+            else:
+                return self._id
+
+    @property
+    def username(self):
+        return self._username
+
+    @property
+    def is_private(self):
+        return self.id is None
 

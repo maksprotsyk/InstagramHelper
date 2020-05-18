@@ -1,7 +1,7 @@
 from modules.Containers.node import Node
 
 
-class LinkedList:
+class Multiset:
     def __init__(self):
         self.head = None
         self.__length = 0
@@ -12,6 +12,7 @@ class LinkedList:
         else:
             self.head = Node(item)
         self.__length += 1
+
 
     def __len__(self):
         return self.__length
