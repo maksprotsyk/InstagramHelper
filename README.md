@@ -25,6 +25,7 @@ pip install nltk
 pip install igramscraper
 ```
 Installing instagram-scraper can cause some problems (for example unexpected exception), if so clone the repository and it will work
+
 5. Installing selenium
 ```bash
 pip install selenium
