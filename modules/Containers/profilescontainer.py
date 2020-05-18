@@ -40,7 +40,7 @@ class ProfilesContainer:
     def collect_texts(self) -> str:
         """
         Collects the captions of all posts
-        and processes them with TextContainer 
+        and processes them with TextContainer
         """
         texts = TextContainer()
         for posts in self.profiles.values():
