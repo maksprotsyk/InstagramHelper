@@ -1,7 +1,7 @@
 from modules.Containers.textcontainer import TextContainer
 from modules.Instagram.parser import InstagramParser
 from insta.igramscraper.instagram import Instagram
-
+from fp.fp import FreeProxy
 
 class ProfilesContainer:
     """
@@ -13,6 +13,12 @@ class ProfilesContainer:
         """
         self.profiles = dict()
         self.controller = Instagram()
+
+    def __len__(self) -> str:
+        """
+        Returns length of the container
+        """
+        return len(self.profiles)
 
     def _create(self, username: str) -> None:
         """
