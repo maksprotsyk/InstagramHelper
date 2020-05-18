@@ -1,6 +1,9 @@
-from modules.Containers.multiset import Multiset
+"""
+Implementation of the TextContainer
+"""
 import re
-from nltk.stem import PorterStemmer
+from modules.Containers.multiset import Multiset
+# from nltk.stem import PorterStemmer
 
 
 class TextContainer(Multiset):
@@ -32,10 +35,14 @@ class TextContainer(Multiset):
         Joins all the texts with given string
         """
         result = ''
-        if len(self) != 0:
+        if self.head is not None:
             for item in self:
                 result += item
                 result += string
             return result[:-len(string)]
         else:
             return result
+
+
+if __name__ == '__main__':
+    pass

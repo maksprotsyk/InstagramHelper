@@ -205,7 +205,7 @@ class Processor:
         time.sleep(sleep)
 
     def get_following(self, username: str,
-                      filename: str, limit=200, errors=10) -> None:
+                      filename: str, limit=200) -> None:
         """
         Collects followings of the given
         user and writes them into a file
@@ -234,15 +234,7 @@ class Processor:
 
         # writes users into a file
         with open(filename, 'a') as output:
-            error_num = 0
             for num in range(1, min(followings + 1, limit)):
-
-                # if there are too many errors in a row,
-                # finishes the process
-                if error_num == errors:
-                    time.sleep(2 * self.loading_delay)
-                    break
-
                 xpath = ("/html/body"
                          "/div[4]/div"
                          "/div[2]/ul/div"
@@ -254,12 +246,9 @@ class Processor:
                             .load_element(xpath.format(num), wait=1)\
                             .get_attribute('title')
 
-                    print(following)
                     output.write(following + ' ')
-                    error_num = 0
                 except AttributeError:
-                    error_num += 1
-                    print("Can't find the user")
+                    print(f"Can't find the user: {following}")
 
                 # scrolls every sixth time and
                 # waits randomly from 0.2 to 1.2 seconds

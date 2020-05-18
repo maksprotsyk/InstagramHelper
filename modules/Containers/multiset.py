@@ -1,3 +1,6 @@
+"""
+Implementation of the Multiset
+"""
 from modules.Containers.node import Node
 
 
@@ -11,8 +14,9 @@ class Multiset:
         """
         self.head = None
         self.__length = 0
+        self._current = self.head
 
-    def add(self, item) -> None:
+    def add(self, item: object) -> None:
         """
         Adds an item to the multiset
         """
@@ -22,16 +26,23 @@ class Multiset:
             self.head = Node(item)
         self.__length += 1
 
-    def remove(self, item) -> None:
+    def remove(self, item: object) -> None:
         """
         Removes the first item equal to the given
         (does nothing if multiset doesn't contain it)
         """
         node = self.head
-        while node is not None and node.item != item:
-            node = node.next
-        if node.item == item:
-            node
+        if node is not None:
+            if node.item == item:
+                self.head = self.head.next
+                self.__length -= 1
+            else:
+                while node.next is not None and node.next.item != item:
+                    node = node.next
+                if node.next is not None:
+                    node.next = node.next.next
+                    self.__length -= 1
+
 
     def __len__(self) -> int:
         """
@@ -46,7 +57,7 @@ class Multiset:
         self._current = self.head
         return self
 
-    def __next__(self):
+    def __next__(self) -> object:
         """
         Returns next item (for the iter method)
         """
@@ -64,8 +75,7 @@ class Multiset:
         for value in self:
             if value == item:
                 return True
-        else:
-            return False
+        return False
 
     def __str__(self) -> str:
         """
@@ -75,3 +85,7 @@ class Multiset:
         for item in self:
             string += f"{item} -> "
         return string + "..."
+
+
+if __name__ == '__main__':
+    pass

@@ -1,6 +1,10 @@
+"""
+Class for parsing of instagram profiles
+"""
+import re
 from bs4 import BeautifulSoup
 import requests
-import re
+
 
 
 class HtmlParser:
@@ -121,9 +125,9 @@ class InstagramParser(HtmlParser):
                 self._id = re.search(r'"owner":{"id":"(.+?)"[,}]',
                                      text)[1]
             except TypeError:
-                self._id = None
-            else:
-                return self._id
+                pass
+
+        return self._id
 
     @property
     def username(self) -> str:
@@ -138,3 +142,7 @@ class InstagramParser(HtmlParser):
         Checks if user is private
         """
         return self.id is None
+
+
+if __name__ == '__main__':
+    pass

@@ -1,8 +1,11 @@
+"""
+Implementation of the Node
+"""
 class Node:
     """
     Represents a node
     """
-    def __init__(self, item, connected=None) -> None:
+    def __init__(self, item: object, connected=None) -> None:
         """
         Initializes a node with given item and next node
         """
@@ -14,3 +17,7 @@ class Node:
         Returns string representation of the object
         """
         return f"Node({self.item}, ...)"
+
+
+if __name__ == '__main__':
+    pass
