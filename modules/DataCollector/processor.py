@@ -41,7 +41,6 @@ class Processor:
         except NoElement:
             return False
 
-
     def load_element(self, xpath: str, wait=5) -> WebElement:
         """
         Tries to load element if it is not
@@ -75,18 +74,18 @@ class Processor:
             raise LoginError('Password should be '
                              'at least 6 characters long')
         else:
-            #Opens login page
+            # Opens login page
             self.get(self.URL[:-3])
             time.sleep(self.actions_delay)
 
-            #enters username
+            # enters username
             self.send_keys(username, '//*[@id="react-root"]/section'
                                      '/main/article/div[2]'
                                      '/div[1]/div/form/div[2]'
                                      '/div/label/input')
             time.sleep(self.actions_delay)
 
-            #enters password
+            # enters password
             self.send_keys(password, '//*[@id="react-root"]/section'
                                      '/main/article/div[2]/div[1]'
                                      '/div/form/div[3]/div/label'
@@ -97,7 +96,7 @@ class Processor:
                           '/article/div[2]/div[1]'
                           '/div/form/div[4]/button')
 
-            #clicks on the login button
+            # clicks on the login button
             self.load_element(login_path).click()
 
             # if the button is still on the page,
@@ -107,7 +106,7 @@ class Processor:
                 raise LoginError('Wrong password or username')
 
             try:
-                #closes instagram login message
+                # closes instagram login message
                 self.load_element('/html/body/div[4]/div/div'
                                   '/div[3]/button[2]').click()
             except AttributeError:
@@ -190,8 +189,6 @@ class Processor:
         else:
             return False
 
-
-
     def scroll(self, scroller: WebElement,
                part: int, sleep=0.8) -> None:
         """
@@ -214,7 +211,7 @@ class Processor:
 
         followings = self.following_num(username)
 
-        #clicks on Following button
+        # clicks on Following button
         self.load_element('//*[@id="react-root"]/section'
                           '/main/div/header/section'
                           '/ul/li[3]/a').click()
@@ -222,7 +219,8 @@ class Processor:
         # loads scroller element
         processing_start = time.time()
         scroller = self.load_element('/html/body/div[4]'
-                                     '/div/div[2]', wait=(self.loading_delay-1))
+                                     '/div/div[2]',
+                                     wait=(self.loading_delay-1))
         time.sleep(self.loading_delay + processing_start - time.time())
 
         # makes some big scrolls
