@@ -1,4 +1,4 @@
-#USERS TO MAKE RECOMMENDATIONS
+#USERS TO SEARCH SUBSCRIPTIONS
 goodfella_pk
 sadova._
 vvvadillla
