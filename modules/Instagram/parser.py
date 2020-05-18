@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 import requests
 
 
-
 class HtmlParser:
     """
     Abstract class for parsing different web pages

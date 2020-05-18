@@ -1,6 +1,8 @@
 """
 Implementation of the Node
 """
+
+
 class Node:
     """
     Represents a node

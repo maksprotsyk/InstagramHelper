@@ -31,7 +31,6 @@ class Processor:
         """
         self.browser = webdriver.Chrome('chromedriver')
 
-
     def check_element(self, xpath: str) -> WebElement:
         """
         Checks if the given xpath is present

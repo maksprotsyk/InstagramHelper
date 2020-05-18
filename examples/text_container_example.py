@@ -18,7 +18,6 @@ text2 = ('The beast in the forest. #TOYOTA #Tundr'
          ' #Adventure #EnjoyNature')
 
 
-
 container = TextContainer()
 
 container.add(text1)

@@ -43,7 +43,6 @@ class Multiset:
                     node.next = node.next.next
                     self.__length -= 1
 
-
     def __len__(self) -> int:
         """
         Returns the length of the multiset
