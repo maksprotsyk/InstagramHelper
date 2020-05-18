@@ -4,8 +4,8 @@
 Telegram bot that will help you effectively use your Instagram profile.
 Its main functions include:
 * Getting a list of recommended Profiles
-* Removing ads from your feed
-* Getting a list of followed profiles that you don’t visit very often
+* Viewing posts of the given profiles
+* Subscribing to the recommened profiles
 
 ## Installation:
 1. Installing Instpector
