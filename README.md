@@ -30,6 +30,10 @@ Installing instagram-scraper can cause some problems (for example unexpected exc
 ```bash
 pip install selenium
 ```
+6. Installing pandas
+```bash
+pip install pandas
+```
 
 ## Credits:
 * Diana Kmet
