@@ -1,3 +1,6 @@
+"""
+Example for ProfilesContainer
+"""
 from modules.Containers.profilescontainer import ProfilesContainer
 
 user1 = 'toyota'

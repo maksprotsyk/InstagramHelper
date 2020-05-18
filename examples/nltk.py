@@ -1,4 +1,7 @@
-# from nltk.stem.porter import PorterStemmer
+"""
+Example for nltk
+"""
+import nltk
 
 text = ("The Centre on Sunday extended the nationwide"
         " lockdown till May 31 to keep a check on the "
@@ -9,6 +12,6 @@ text = ("The Centre on Sunday extended the nationwide"
 
 
 words = text.split()
-stemmer = PorterStemmer()
+stemmer = nltk.stem.PorterStemmer()
 stems = [stemmer.stem(item) for item in words]
 print(f'Only stems:\n {" ".join(stems)}')

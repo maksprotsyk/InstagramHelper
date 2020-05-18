@@ -1,3 +1,6 @@
+"""
+Example for TextContainer
+"""
 from modules.Containers.textcontainer import TextContainer
 
 

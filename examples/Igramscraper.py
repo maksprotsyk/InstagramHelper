@@ -1,4 +1,7 @@
-from insta.igramscraper.instagram import Instagram
+"""
+Example for instagram-scraper
+"""
+from igramscraper.instagram import Instagram
 
 
 def get_first_posts(num, username):
