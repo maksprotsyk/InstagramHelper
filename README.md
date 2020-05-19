@@ -78,7 +78,11 @@ pip install -r requirements.txt
   #### Contains two modules:
   * [processor.py](modules/data_collector/processor.py) - contains `Processor` class (collects data from the Instagram)
   * [data_collector.py](modules/data_collector/data_collector.py) - contains some functions that use `Processor` class to get data
-  `Procerror` class has a lot of methods. Here are some examples:
+  
+  
+  `Processor` class has a large amount of methods.
+ 
+  Here are some examples:
   
   `login(username, password)` - performs logining process
   
