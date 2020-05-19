@@ -5,6 +5,8 @@
 * [Description](#description)
 * [Installation](#installation)
 * [Screenshots](#screenshots)
+* [Credits](#credits)
+* [License](#license)
 
 
 ## Description:
@@ -36,3 +38,6 @@ pip install -r requirements.txt
 ## Credits:
 * Diana Kmet
 * Maksym Protsyk
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
