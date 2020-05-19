@@ -3,7 +3,7 @@ Example for nltk
 """
 import nltk
 
-text = ("The Centre on Sunday extended the nationwide"
+TEXT = ("The Centre on Sunday extended the nationwide"
         " lockdown till May 31 to keep a check on the "
         "spread of Covid-19 which has infected over 90,000 "
         "people across India. The Union home ministry has issued"
@@ -11,7 +11,7 @@ text = ("The Centre on Sunday extended the nationwide"
         " lockdown 4.0. Stay with TOI for live updates")
 
 
-words = text.split()
-stemmer = nltk.stem.PorterStemmer()
-stems = [stemmer.stem(item) for item in words]
-print(f'Only stems:\n {" ".join(stems)}')
+WORDS = TEXT.split()
+STEMMER = nltk.stem.PorterStemmer()
+STEMS = [STEMMER.stem(item) for item in WORDS]
+print(f'Only stems:\n {" ".join(STEMS)}')

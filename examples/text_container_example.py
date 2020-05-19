@@ -1,7 +1,7 @@
 """
 Example for TextContainer
 """
-from modules.Containers.textcontainer import TextContainer
+from modules.containers.text_container import TextContainer
 
 
 text1 = ('Room for the whole gang. #TOYOTA'

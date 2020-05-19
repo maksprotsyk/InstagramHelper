@@ -5,10 +5,13 @@ import requests
 from bs4 import BeautifulSoup
 
 # example of post url
-url = 'https://www.instagram.com/p/B-uyBVRpWe2/'
+URL = 'https://www.instagram.com/p/B-uyBVRpWe2/'
 
 
-def get_post_description(post_url):
+def get_post_description(post_url: str) -> str:
+    """
+    Gets the description of the given post
+    """
     html = requests.get(post_url).text
 
     # parsing html with beautiful soup in order to get post description
@@ -19,4 +22,4 @@ def get_post_description(post_url):
 
 
 if __name__ == '__main__':
-    print(get_post_description(url))
+    print(get_post_description(URL))

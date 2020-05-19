@@ -1,16 +1,16 @@
 """
 Example for ProfilesContainer
 """
-from modules.Containers.profilescontainer import ProfilesContainer
+from modules.containers.profiles_container import ProfilesContainer
 
-user1 = 'toyota'
+USER1 = 'toyota'
 
-user2 = 'lamborghini'
+USER2 = 'lamborghini'
 
 
-container = ProfilesContainer()
+CONTAINER = ProfilesContainer()
 
-container.get_posts(user1)
-container.get_posts(user2)
+CONTAINER.get_posts(USER1)
+CONTAINER.get_posts(USER2)
 
-print(container.collect_texts())
+print(CONTAINER.collect_texts())

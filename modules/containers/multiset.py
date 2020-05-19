@@ -1,7 +1,7 @@
 """
 Implementation of the Multiset
 """
-from modules.Containers.node import Node
+from modules.containers.node import Node
 
 
 class Multiset:
@@ -62,10 +62,9 @@ class Multiset:
         """
         if self._current is None:
             raise StopIteration
-        else:
-            item = self._current.item
-            self._current = self._current.next
-            return item
+        item = self._current.item
+        self._current = self._current.next
+        return item
 
     def __contains__(self, item) -> bool:
         """

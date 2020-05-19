@@ -3,7 +3,7 @@ Module for collecting data with Processor class
 """
 import time
 from selenium.common.exceptions import JavascriptException
-from modules.DataCollector.processor import Processor
+from modules.data_collector.processor import Processor
 
 
 # phase1.txt

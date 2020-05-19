@@ -75,10 +75,9 @@ class InstagramParser(HtmlParser):
         """
         if 'm' in num:
             return int(float(num[:-1]) * 1000000)
-        elif 'k' in num:
+        if 'k' in num:
             return int(float(num[:-1]) * 1000)
-        else:
-            return int(num.replace(',', ''))
+        return int(num.replace(',', ''))
 
     def _get_data(self, index: int) -> int:
         """

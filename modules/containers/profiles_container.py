@@ -1,9 +1,11 @@
 """
 Implementation of the ProfilesContainer
 """
-from modules.Containers.text_container import TextContainer
-from modules.Instagram.parser import InstagramParser
-from igramscraper.instagram import Instagram
+from modules.containers.text_container import TextContainer
+from modules.instagram.parser import InstagramParser
+from igramscraper.instagram import Instagram,\
+                                   InstagramException,\
+                                   InstagramNotFoundException
 
 
 class ProfilesContainer:
@@ -41,10 +43,16 @@ class ProfilesContainer:
         already saved (also created the user if it is not
         in the container)
         """
-        self._create(username)
-        if self.profiles[username] is None:
-            self.profiles[username] = self.controller.get_medias(username, 5)
-        return self.profiles[username]
+        try:
+            self._create(username)
+            if self.profiles[username] is None:
+                self.profiles[username] = self.controller.get_medias(
+                    username, 5
+                )
+            return self.profiles[username]
+        except (InstagramNotFoundException, InstagramException):
+            return []
+
 
     def collect_texts(self) -> str:
         """

@@ -15,52 +15,54 @@ with open('../../data/phase6.txt', encoding='utf-8') as in_file:
     DATA = re.findall(r'^([^ ]+) *(.*)$', in_file.read(), flags=re.M)
 
 # naming columns
-df = pd.DataFrame(data=DATA, columns=['following', 'description'])\
+DATAFRAME = pd.DataFrame(data=DATA, columns=['following', 'description'])\
        .drop_duplicates(subset='following')
 
 
 # processing texts of every user
-df['description'] = df['description'].str\
-                                     .replace('([A-Z][a-z]+)', ' \\1')\
+DATAFRAME['description'] = DATAFRAME['description']\
                                      .str\
-                                     .replace("\'", '')\
+                                     .replace(r'([A-Z][a-z]+)', r' \\1')\
                                      .str\
-                                     .replace('\W|\d|_', ' ')\
+                                     .replace(r"\'", '')\
                                      .str\
-                                     .replace('\s+', ' ')\
+                                     .replace(r'\W|\d|_', ' ')\
+                                     .str\
+                                     .replace(r'\s+', ' ')\
                                      .str.strip()\
                                      .str.lower()
 
 # getting stems of english words
 # and removing ukrainian stop words
-stemmer = PorterStemmer()
+STEMMER = PorterStemmer()
 with open('../../data/stopwords.txt') as in_file:
-    stop_words = in_file.read().split('\n')
-df['description'] = df['description']\
-                        .apply(lambda row: ' '.join(
-                        [stemmer.stem(word)
-                        for word in row.split(' ')
-                        if word not in stop_words])
-                        )
+    STOP_WORDS = in_file.read().split('\n')
+DATAFRAME['description'] = DATAFRAME['description'].apply(
+    lambda row: ' '.join(
+                [STEMMER.stem(word)
+                 for word in row.split(' ')
+                 if word not in STOP_WORDS]
+    )
+    )
 
 # deleting short texts
-df = df[df['description'].apply(len) > 30]
+DATAFRAME = DATAFRAME[DATAFRAME['description'].apply(len) > 30]
 
 # creating a pipeline that can vectorize the texts and cluster them
 # includes only words with len 3 or more
-pipe = Pipeline([('vectorizer', TfidfVectorizer(stop_words='english',
+PIPE = Pipeline([('vectorizer', TfidfVectorizer(stop_words='english',
                                                 token_pattern=r'\b\w{3,}\b')),
                  ('clustering', AffinityPropagation())])
 
 # training the model
-pipe.fit(df['description'])
+PIPE.fit(DATAFRAME['description'])
 
 # creating a column for cluster numbers
-df['cluster'] = pipe.named_steps['clustering'].labels_
+DATAFRAME['cluster'] = PIPE.named_steps['clustering'].labels_
 
 # saving DataFrame to csv
-df.to_csv('../../data/phase7.csv', index=False, encoding='utf-8-sig')
+DATAFRAME.to_csv('../../data/phase7.csv', index=False, encoding='utf-8-sig')
 
 # saving machine learning model to pickle file
 with open('../../data/model.pickle', 'wb') as output:
-    pickle.dump(pipe, output)
+    pickle.dump(PIPE, output)

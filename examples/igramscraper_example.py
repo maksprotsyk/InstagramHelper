@@ -4,9 +4,12 @@ Example for instagram-scraper
 from igramscraper.instagram import Instagram
 
 
-def get_first_posts(num, username):
+def get_first_posts(num: int, username: str) -> list:
+    """
+    Gets first num posts of the given user
+    """
 
-    # creating an instance of Instagram class
+    # creating an instance of instagram class
     instagram = Instagram()
     # gets posts of the given user
     media = instagram.get_medias(username, num)

@@ -18,7 +18,7 @@ class LoginError(Exception):
 
 class Processor:
     """
-    Class for processing Instagram actions
+    Class for processing instagram actions
     """
     login_pause = 30
     actions_delay = 2
@@ -52,7 +52,7 @@ class Processor:
             elem = self.check_element(xpath)
             if elem:
                 return elem
-            elif time.time() - start > wait:
+            if time.time() - start > wait:
                 return None
 
     def send_keys(self, message: str, path: str) -> None:
@@ -67,63 +67,61 @@ class Processor:
 
     def login(self, username: str, password: str) -> None:
         """
-        Login into the given Instagram account
+        Login into the given instagram account
         """
 
         if len(password) < 6:
             raise LoginError('Password should be '
                              'at least 6 characters long')
-        else:
-            # Opens login page
-            self.get(self.URL[:-3])
-            time.sleep(self.actions_delay)
+        # Opens login page
+        self.get(self.URL[:-3])
+        time.sleep(self.actions_delay)
 
-            # enters username
-            self.send_keys(username, '//*[@id="react-root"]/section'
-                                     '/main/article/div[2]'
-                                     '/div[1]/div/form/div[2]'
-                                     '/div/label/input')
-            time.sleep(self.actions_delay)
+        # enters username
+        self.send_keys(username, '//*[@id="react-root"]/section'
+                                 '/main/article/div[2]'
+                                 '/div[1]/div/form/div[2]'
+                                 '/div/label/input')
+        time.sleep(self.actions_delay)
 
-            # enters password
-            self.send_keys(password, '//*[@id="react-root"]/section'
-                                     '/main/article/div[2]/div[1]'
-                                     '/div/form/div[3]/div/label'
-                                     '/input')
-            time.sleep(self.actions_delay)
+        # enters password
+        self.send_keys(password, '//*[@id="react-root"]/section'
+                                 '/main/article/div[2]/div[1]'
+                                 '/div/form/div[3]/div/label'
+                                 '/input')
+        time.sleep(self.actions_delay)
 
-            login_path = ('//*[@id="react-root"]/section/main'
-                          '/article/div[2]/div[1]'
-                          '/div/form/div[4]/button')
+        login_path = ('//*[@id="react-root"]/section/main'
+                      '/article/div[2]/div[1]'
+                      '/div/form/div[4]/button')
 
-            # clicks on the login button
-            self.load_element(login_path).click()
+        # clicks on the login button
+        self.load_element(login_path).click()
 
-            # if the button is still on the page,
-            # than the password is incorrect
-            time.sleep(self.login_pause)
-            if self.check_element(login_path):
-                raise LoginError('Wrong password or username')
+        # if the button is still on the page,
+        # than the password is incorrect
+        time.sleep(self.login_pause)
+        if self.check_element(login_path):
+            raise LoginError('Wrong password or username')
 
-            try:
-                # closes instagram login message
-                self.load_element('/html/body/div[4]/div/div'
-                                  '/div[3]/button[2]').click()
-            except AttributeError:
-                pass
+        try:
+            # closes instagram login message
+            self.load_element('/html/body/div[4]/div/div'
+                              '/div[3]/button[2]').click()
+        except AttributeError:
+            pass
 
     @staticmethod
     def convert_num(num: str) -> int:
         """
-        Converts Instagram number in string format
+        Converts instagram number in string format
         into int
         """
         if 'm' in num:
             return int(float(num[:-1]) * 1000000)
-        elif 'k' in num:
+        if 'k' in num:
             return int(float(num[:-1]) * 1000)
-        else:
-            return int(num.replace(',', ''))
+        return int(num.replace(',', ''))
 
     def get(self, url: str, refresh=False) -> None:
         """

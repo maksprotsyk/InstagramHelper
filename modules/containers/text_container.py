@@ -3,13 +3,14 @@ Implementation of the TextContainer
 """
 import re
 from nltk.stem import PorterStemmer
-from modules.Containers.multiset import Multiset
+from modules.containers.multiset import Multiset
 
 
 class TextContainer(Multiset):
     """
     Multiset that can process text
     """
+    STOP_WORDS = []
     stemmer = PorterStemmer()
 
     @staticmethod
@@ -18,13 +19,14 @@ class TextContainer(Multiset):
         Removes unnecessary symbols from the text
         and get stems of the words if it is possible
         """
-        item = re.sub('([A-Z][a-z]+)', ' \\1', item)
-        item = re.sub("\'", '', item)
-        item = re.sub('\W|\d|_', ' ', item)
-        item = re.sub('\s+', ' ', item)
+        item = re.sub(r'([A-Z][a-z]+)', ' \\1', item)
+        item = re.sub(r"\'", '', item)
+        item = re.sub(r'\W|\d|_', ' ', item)
+        item = re.sub(r'\s+', ' ', item)
         item = item.lower().strip()
         return ' '.join([TextContainer.stemmer.stem(word)
-                         for word in item.split()])
+                         for word in item.split()
+                         if item not in TextContainer.STOP_WORDS])
 
     def process_container(self) -> None:
         """
@@ -45,8 +47,7 @@ class TextContainer(Multiset):
                 result += item
                 result += string
             return result[:-len(string)]
-        else:
-            return result
+        return result
 
 
 if __name__ == '__main__':
