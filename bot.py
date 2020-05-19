@@ -8,7 +8,7 @@ import pandas as pd
 from modules.Instagram.user_interaction import analyze, get_first_post
 
 
-BOT = telebot.TeleBot('1196552839:AAGMLq4rKPThtsvR5XmGs3YVOC-rZcfg15Y')
+BOT = telebot.TeleBot('your_api')
 
 with open('data/model.pickle', 'rb') as in_file:
     MODEL = pickle.load(in_file)
