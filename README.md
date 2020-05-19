@@ -32,7 +32,35 @@ pip install -r requirements.txt
  * [parser.py](modules/instagram/parser.py)
  * [user_interaction.py](modules/instagram/user_interaction.py)
  
- parser.py allows user to access instagram profiles with requests and BeautifulSoup
+ The first one allows user to access instagram profiles with requests and BeautifulSoup libraries
+ 
+ It contains two classes:
+ 
+ `HtmlParser` and `InstagramParser`
+ 
+  The main `HtmlParser` method is  `parser(self)` - it returns a `BeautifulSoup` object for the given url 
+  It also can change the url with `@url.setter` (parser is changed as well) and get its value
+  
+  `InstagramParser` is a child class of `HtmlParser` and has some specific methods to work with instagram
+  This class is initialized with given username and allows to get user's followers, follows and posts count
+  It also can check if the user is private with `is_private` property
+  
+  The second module is used to interact with user. It contains only two functions:
+  
+  `analyze(usernames, model, dataframe, stop_words, length)` - this function recommends some profiles based on the machine learning model and dataframe with clusters, `stop_words` paramether helps with deleting unnecessary words in the posts captions of the given users (the function analyzes them) and the last one `length` checks if the resulting length is greater than the given value
+  
+  `get_first_post(username)` - allows to get the first post link for the given user
+  
+  ### Package [Containers](modules/containers)
+  #### Contains four modules:
+  * [multiset.py](modules/containers/multiset.py) - implementation of the `Multiset`
+  * [node.py](modules/containers/node.py) - implementation of the `Node` for linked structures
+  * [text_container.py](modules/containers/text_container.py) - implementation of the `TextContainer ADT`
+  * [profiles_container.py](modules/containers/profiles_container.py) - implementation of the `ProfilesContainer ADT'
+  
+  `TextContainer` is used for text processing and deletting unnecessary data
+  It is a child class of `Multiset` and has 3 important methods: 
+  `process_text(str)` - removes trash 
  
  
  ## Screenshots
