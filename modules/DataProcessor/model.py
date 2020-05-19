@@ -11,7 +11,7 @@ from nltk.stem import PorterStemmer
 
 
 # opening data file and saving it to the list
-with open('/data/phase6.txt', encoding='utf-8') as in_file:
+with open('../../data/phase6.txt', encoding='utf-8') as in_file:
     DATA = re.findall(r'^([^ ]+) *(.*)$', in_file.read(), flags=re.M)
 
 # naming columns
@@ -34,7 +34,7 @@ df['description'] = df['description'].str\
 # getting stems of english words
 # and removing ukrainian stop words
 stemmer = PorterStemmer()
-with open('data/stopwords.txt') as in_file:
+with open('../../data/stopwords.txt') as in_file:
     stop_words = in_file.read().split('\n')
 df['description'] = df['description']\
                         .apply(lambda row: ' '.join(
@@ -59,8 +59,8 @@ pipe.fit(df['description'])
 df['cluster'] = pipe.named_steps['clustering'].labels_
 
 # saving DataFrame to csv
-df.to_csv('data/phase7.csv', index=False, encoding='utf-8-sig')
+df.to_csv('../../data/phase7.csv', index=False, encoding='utf-8-sig')
 
 # saving machine learning model to pickle file
-with open('data/model.pickle', 'wb') as output:
+with open('../../data/model.pickle', 'wb') as output:
     pickle.dump(pipe, output)
