@@ -23,10 +23,10 @@ pip install -r requirements.txt
  and put igramscraper folder in the project folder)
  
  ## Screenshots
-### Bot meets you with a greeting message
-<img src="images/screenshot1.png" width="250"/>
-### Bot sends some recommendations
-<img src="images/screenshot2.png" width="250"/>
+**Bot meets you with a greeting message
+<img src="images/Screenshot1.png" width="450"/>
+**Bot sends some recommendations
+<img src="images/Screenshot2.png" width="450"/>
 
 
 ## Credits:
