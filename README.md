@@ -27,6 +27,13 @@ pip install -r requirements.txt
 
  ## Usage
  The project consists of 4 module packages and one main module: [bot.py](bot.py)
+ ### Package [Instagram](modules/instagram)
+ #### Contains two modules:
+ * [parser.py](modules/instagram/parser.py)
+ * [user_interaction.py](modules/instagram/user_interaction.py)
+ 
+ parser.py allows user to access instagram profiles with requests and BeautifulSoup
+ 
  
  ## Screenshots
  
