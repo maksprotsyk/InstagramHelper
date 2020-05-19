@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
  ## Usage
  The project consists of 4 module packages and one main module: [bot.py](bot.py)
- ### Package [Instagram](modules/instagram)
+ ### Package [instagram](modules/instagram)
  #### Contains two modules:
  * [parser.py](modules/instagram/parser.py)
  * [user_interaction.py](modules/instagram/user_interaction.py)
@@ -51,7 +51,7 @@ pip install -r requirements.txt
   
   `get_first_post(username)` - allows to get the first post link for the given user
   
-  ### Package [Containers](modules/containers)
+  ### Package [containers](modules/containers)
   #### Contains four modules:
   * [multiset.py](modules/containers/multiset.py) - implementation of the `Multiset`
   * [node.py](modules/containers/node.py) - implementation of the `Node` for linked structures
@@ -60,8 +60,34 @@ pip install -r requirements.txt
   
   `TextContainer` is used for text processing and deletting unnecessary data
   It is a child class of `Multiset` and has 3 important methods: 
-  `process_text(str)` - removes trash 
- 
+  `process_text(str)` - removes unimportant data
+  `process_container()` - processes all the texts in container
+  `join_with(str)` - joins all texts with given string
+  
+  `ProfilesContainer` is used for containing users and their posts
+  It has three specific methods:
+  `get_posts(username)` - get posts of the givem user and saves them in the container
+  `check_user(username)` - checks if user satisfies the conditions
+  `collect_texts()` - collects all posts captions and processes them with the `TextContainer`
+  
+  ### Package [data_processor](modules/data_processor)
+  #### Contains only one module: [model.py](modules/data_processor/model.py)
+  This module processes the [data](data) and creates a machine learning model for clusterisation of users
+  
+  ### Package [data_collector](modules/data_collector)
+  #### Contains two modules:
+  * [processor.py](modules/data_collector/processor.py) - contains `Processor` class (collects data from the Instagram)
+  * [data_collector.py](modules/data_collector/data_collector.py) - contains some functions that use `Processor` class to get data
+  `Procerror` class has a lot of methods. Here are some examples:
+  
+  `login(username, password)` - performs logining process
+  
+  `scroll(scrollbar)` - scrolls the given scrollbar
+  
+  `get_following(username)` - get follows of the user
+  
+  ...
+  
  
  ## Screenshots
  
