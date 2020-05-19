@@ -1,5 +1,5 @@
 # Instagram Helper Bot
-![](https://github.com/maksprotsyk/homework/blob/master/images/logo.png)
+![](https://github.com/maksprotsyk/homework/blob/master/images/logo.png =250x)
 
 ## Description:
 Telegram bot that will help you effectively use your Instagram profile.
