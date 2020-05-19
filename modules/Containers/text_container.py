@@ -2,8 +2,8 @@
 Implementation of the TextContainer
 """
 import re
-from modules.Containers.multiset import Multiset
 from nltk.stem import PorterStemmer
+from modules.Containers.multiset import Multiset
 
 
 class TextContainer(Multiset):

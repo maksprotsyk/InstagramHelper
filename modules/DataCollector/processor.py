@@ -184,10 +184,7 @@ class Processor:
                                   '/section/main/div'
                                   '/div/article/div'
                                   '/div/h2')
-        if elem:
-            return True
-        else:
-            return False
+        return elem
 
     def scroll(self, scroller: WebElement,
                part: int, sleep=0.8) -> None:

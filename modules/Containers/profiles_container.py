@@ -1,7 +1,7 @@
 """
 Implementation of the ProfilesContainer
 """
-from modules.Containers.textcontainer import TextContainer
+from modules.Containers.text_container import TextContainer
 from modules.Instagram.parser import InstagramParser
 from igramscraper.instagram import Instagram
 
