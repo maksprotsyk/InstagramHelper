@@ -1,4 +1,4 @@
-# Instagram Helper Bot
+# [Instagram Helper Bot](https://web.telegram.org/#/im?p=@ucu_instagram_bot)
 <img src="images/logo.png" width="250"/>
 
 ## Table of contents
